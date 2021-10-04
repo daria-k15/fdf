@@ -34,7 +34,7 @@ CFLAGS		= -Wall -Wextra -Werror
 GREEN = \033[0;32m
 
 			
-$(LIB):		$(SRC_D) 
+$(LIB):		$(HEADER_D)
 			@$(CC) $(CFLAGS) -c $(SRC_D) -I ./include
 			@mkdir -p $(OBJ_D) && mv $(SRCS:.c=.o) ./$(OBJ_D)
 			@ar rc $(LIB) $(OBJS)

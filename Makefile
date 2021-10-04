@@ -10,19 +10,28 @@ LIBFT_HEADERS = $(LIBFT_DIRECTORY)include/
 MINILIBX = $(MINILIBX_DIRECTORY)libmlx.a
 MINILIBX_DIRECTORY = ./mlx/
 MINILIBX_HEADERS = $(MINILIBX_DIRECTORY)
-MLX_FLAGS = -L$(MINILIBX_DIRECTORY) -lmlx -L/usr/lib -lXext -lX11 -lm -lz
+MLX_FLAGS = -L$(MINILIBX_DIRECTORY) -Lmlx -lmlx -framework OpenGL -framework AppKit
 
-HEADER =	fdf.h \
+HEADER =	inc/fdf.h \
 			mlx/mlx.h \
 			libft/include/libft.h
 
-SOURCES =	main.c\
+SOURCES_L =	fdf.c \
 			read_file.c \
-			map.c
+			key_control.c \
+			utils.c \
+			print.c \
+			inits.c \
+			color.c \
+			create_color.c \
+			projection.c \
+			operations.c
 	
 
+SOURCES_DIRECTORY = ./src/
+SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_L))
 OBJECTS_DIRECTORY = objects/
-OBJECTS_LIST = $(patsubst %.c, %.o, $(SOURCES))
+OBJECTS_LIST = $(patsubst %.c, %.o, $(SOURCES_L))
 OBJECTS	= $(addprefix $(OBJECTS_DIRECTORY), $(OBJECTS_LIST))
 
 # COLORS
@@ -31,7 +40,7 @@ GREEN = \033[0;32m
 RED = \033[0;31m
 RESET = \033[0m
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re test
 
 all: $(NAME)
 
@@ -66,3 +75,6 @@ fclean: clean
 re:
 	@$(MAKE) fclean
 	@$(MAKE) all
+
+test:	all
+		./fdf 42.fdf

@@ -34,7 +34,7 @@ int	ft_atoi(const char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		nb = (nb * 10) + (str[i] - '0');
-		if (nb < -2147483647 && sign == -1)
+		if (nb < 2147483647 && sign == -1)
 			return (0);
 		if (nb > 2147483647 && sign == 1)
 			return (-1);

@@ -1,6 +1,18 @@
-#include "../include/libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: heveline <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/05 13:26:37 by heveline          #+#    #+#             */
+/*   Updated: 2021/08/05 13:26:39 by heveline         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-size_t	word_count(char const *str, char c)
+#include "libft.h"
+
+static size_t	word_count(char const *str, char c)
 {
 	size_t	count;
 
